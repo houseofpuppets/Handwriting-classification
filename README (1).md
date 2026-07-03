@@ -27,10 +27,15 @@ Raw image → Grayscale → Otsu binarization → Morphological opening
 ## Repository Structure
 
 ```
-├── Graph(2).ipynb          # Main notebook (full pipeline)
-├── Technical_Analysis_Document.pdf    # Technical analysis document
-├── requirements.txt         # Python dependencies
-└── README.md
+handwriting-classification/
+├── Graph__2_.ipynb
+├── Technical_Analysis_Document.pdf
+├── requirements.txt
+├── README.md
+├── cursive_files.txt
+├── mixed_files.txt
+└── printed_files.txt
+
 ```
 
 ## Dataset
@@ -39,14 +44,20 @@ The dataset consists of 441 handwritten line images (147 per class), manually
 selected and labelled from the
 [IAM Handwriting Database](https://fki.tic.heia-fr.ch/databases/iam-handwriting-database).
 
-The pre-labelled subset used in this project is available here:
-https://drive.google.com/drive/folders/1461p90NsMJ3rQdsAu2tJWSIMV8NIM72k?usp=drive_link
+The dataset cannot be redistributed due to licensing restrictions.
 
-To use it in Colab without downloading:
-1. Open the link above and click "Add shortcut to Drive"
-2. Mount your Drive in the notebook (first cell)
-3. Update `DATASET_PATH` with the shortcut location
-4. Run all cells
+To reproduce this project:
+1. Register and download the dataset from the link above
+2. Create the following folder structure:
+
+dataset_graph/
+├── corsivo/
+├── misto/
+└── stampatello/
+
+3. Copy the files listed in `cursive_files.txt`, `mixed_files.txt` 
+   and `printed_files.txt` into the corresponding folders
+4. Update `DATASET_PATH` in the first cell of the notebook
 
 ## Setup and Running Instructions
 
@@ -55,10 +66,7 @@ This project runs on **Google Colab**.
 **Step 1** — Open the notebook:
 > https://colab.research.google.com/drive/1mRFRhfZqEYav0hAZc48GXGZiZNFMZW31?usp=sharing
 
-**Step 2** — Set the dataset path in the first cell:
-```python
-DATASET_PATH = "/content/drive/MyDrive/your_path/dataset_graph"
-```
+**Step 2** — Set the dataset path in the first cell
 
 **Step 3** — Run all cells in order (Runtime → Run all).
 For the MobileNetV2 section, enable GPU first:
